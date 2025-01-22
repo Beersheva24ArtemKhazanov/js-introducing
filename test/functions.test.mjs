@@ -3,8 +3,8 @@ import { myBind } from "../functions.mjs";
 
 describe("myBind test cases according ti rhe TODO comments", () => {
     const point = {x: 3, y: 4};
-    function sumArguments(num3 = 0, num4 = 0) {
-        return this.x + this.y + num3 + num4;
+    function sumArguments(num1 = 0, num2 = 0) {
+        return this.x + this.y + num1 + num2;
     }
     sumArguments.bind = myBind;
     const func = sumArguments.bind(point);
