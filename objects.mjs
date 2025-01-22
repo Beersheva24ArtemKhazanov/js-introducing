@@ -12,11 +12,6 @@ let { gender } = person;
 
 
 export function getOccurencesObject(string) {
-    //TODO
-    //return object with data about occurence for each character in the given string
-    //"abcdab"
-    //data should include a encountered 3 times
-    //b - two times, c and d - one time
     let res = {};
     let isValid = false;
     if ( string != undefined || string != null) {
@@ -27,4 +22,19 @@ export function getOccurencesObject(string) {
         isValid = true;
     }
     return isValid ? res: "Can't get occurences";
+}
+
+export function profGetOccurencesObject(string) {
+    const res = {};
+    if ( string != undefined || string != null) {
+        string = string.toString();
+        for (let i = 0; i < string.length; i++) {
+            let char = string[i];
+            if(!res[char]) {
+                res[char] = 0;
+            }
+            res[char]++;
+        }
+    }
+    return res;
 }
