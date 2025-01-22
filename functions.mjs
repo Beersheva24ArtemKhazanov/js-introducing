@@ -26,6 +26,8 @@ const displayPointArrow = (z) => {
 // display.apply(point, 60);
 
 export function myBind(thisArg) {
-    //TODO
-    //
+    const func = this;
+    return (num1, num2) => {
+        return func.apply(thisArg, [num1, num2]);
+    }
 }
