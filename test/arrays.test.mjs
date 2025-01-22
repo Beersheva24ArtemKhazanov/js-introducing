@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getOccurencesObject } from "../objects.mjs";
+import { getOccurencesObject } from "../arrays.mjs";
 
 describe("getOccurences test cases", () => {
     it("regular test", () => {
