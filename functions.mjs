@@ -25,16 +25,12 @@ const displayPointArrow = (z) => {
 // display.call(point, 50);
 // display.apply(point, 60);
 
-export function myBind(thisArg) {
-    const func = this;
-    return (...args) => {
-        return func.apply(thisArg, [...args]);
-    }
-}
-
-function profBind(thisArg) {
-    const func = this;
-    return () => {
-        func.apply(thisArg, arguments);
-    }
+export function myBind(thisArg, ...otherArgs) {
+    // const func = (...args) => {
+    //     return func.apply(thisArg, args);
+    // }
+    // return func;
+    //TODO
+    //write method myBind fully running standard "bind" method
+    //no using standard call / apply methods
 }
