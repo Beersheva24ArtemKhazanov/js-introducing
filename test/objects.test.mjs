@@ -1,59 +1,42 @@
-import { describe, it, expect } from "vitest";
-import { getOccurencesObject } from "../objects.mjs";
+import {describe, it, expect} from 'vitest';
 
-describe("getOccurences test cases", () => {
-    it("regular test", () => {
-        let expectedObj = {
-            "a" : 2,
-            "b" : 2,
-            "c" : 1
-        };
-        expect(getOccurencesObject("abcab")).toEqual(expectedObj);
+describe("object iterating", () => {
+    const person = {name: "Vasya", age: 25};
+    it("for-in iterating", () => {
+        const keys = ["name", "age"];
+        const actual = [];
+        let index = 0;
+        for (let key in person) {
+            actual[index++] = key;
+        }
+        expect(actual).toEqual(keys);
     })
-    it("many string test", () => {
-        let expectedObj = {
-            "a" : 4,
-            "b" : 2,
-            "c" : 3,
-            "3" : 1,
-            "2" : 1,
-            "1" : 1,
-            "5" : 1,
-            "6" : 1,
-            "d" : 2,
-            "8" : 1
-        };
-        expect(getOccurencesObject("abc321cab56acdad8")).toEqual(expectedObj);
+    it("keys iterating using for...of", () => {
+        const keys = ["name", "age"];
+        const actual = [];
+        let index = 0;
+        for (let key of Object.keys(person)) {
+            actual[index++] = key;
+        }
+        expect(actual).toEqual(keys);
     })
-    it("string is numbers", () => {
-        let expectedObj = {
-            "2" : 1,
-            "5" : 2,
-            "6" : 2,
-            "7" : 1
-        };
-        expect(getOccurencesObject(256756)).toEqual(expectedObj);
-    })
-    it("string has spaces", () => {
-        let expectedObj = {
-            "a" : 4,
-            "b" : 2,
-            "c" : 3,
-            "3" : 1,
-            "2" : 1,
-            " " : 3,
-            "1" : 1,
-            "5" : 1,
-            "6" : 1,
-            "d" : 2,
-            "8" : 1
-        };
-        expect(getOccurencesObject("abc32 1cab56a cda d8")).toEqual(expectedObj);
-    })
-    it("string is null", () => {
-        expect(getOccurencesObject(null)).toEqual("Can't get occurences");
-    })
-    it("string is undefiend", () => {
-        expect(getOccurencesObject()).toEqual("Can't get occurences");
+
+    it("values iterating using for...of", () => {
+        const expectedValues = ["Vasya", 25];
+        const actualValues = [];
+        let index = 0;
+        for(let value of Object.values(person)) {
+            actualValues[index++] = value;
+        }
+        expect(actualValues).toEqual(expectedValues);
+    });
+    it ("iterating entries using for...of", () => {
+        const expectedEntries = [["name", "Vasya"], ["age", 25]];
+        const actualEntries = [];
+        let index = 0;
+        for (let entry of Object.entries(person)) {
+            actualEntries[index++] = entry;
+        }
+        expect(actualEntries).toEqual(expectedEntries);
     })
 })
