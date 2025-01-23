@@ -27,7 +27,14 @@ const displayPointArrow = (z) => {
 
 export function myBind(thisArg) {
     const func = this;
-    return (num1, num2) => {
-        return func.apply(thisArg, [num1, num2]);
+    return (...args) => {
+        return func.apply(thisArg, [...args]);
+    }
+}
+
+function profBind(thisArg) {
+    const func = this;
+    return () => {
+        func.apply(thisArg, arguments);
     }
 }
