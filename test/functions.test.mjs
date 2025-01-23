@@ -16,8 +16,18 @@ describe("myBind test cases according ti rhe TODO comments", () => {
         
         expect(fun()).toBe(7);
     })
-    it(" all parameters are passed ", () => {
-        expect(fun(10, 20)).toBe(37)
+    it(" all parameters are passed inside func ", () => {
+        expect(fun(10, 20)).toBe(37);
+    })
+    
+    it("all parameters inside bind slong with this", () => {
+        const func = sumArguments.bind(dimensions, 10, 20);
+        expect(func()).toBe(37);
+    })
+
+    it("part of args are passed in bind and other part in the bind", () => {
+        const func = sumArguments.bind(dimensions, 10, 20);
+        expect(func(20)).toBe(37);
     })
 
 })
