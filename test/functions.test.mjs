@@ -16,7 +16,7 @@ describe("myBind test cases according ti rhe TODO comments", () => {
         
         expect(fun()).toBe(7);
     })
-    it(" all parameters are passed inside func ", () => {
+    it(" alla parameters are passed inside func ", () => {
         expect(fun(10, 20)).toBe(37);
     })
     
