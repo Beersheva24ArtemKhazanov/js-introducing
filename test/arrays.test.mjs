@@ -30,14 +30,35 @@ describe("inserting new elements in array", () => {
     })
     it("adding new numbers at end of array", () => {
         const ar = [1, 2];
-        const expected = [ 1, 2,-10, -20];
+        const expected = [1, 2, -10, -20];
         ar.push(...inseredNumbers);
         expect(ar).toEqual(expected);
     })
     it("inserting new number at middle of array", () => {
         const ar = [1, 2];
-        const expected = [ 1, -10, -20, 2];
-        ar.splice(1,0,...inseredNumbers)
+        const expected = [1, -10, -20, 2];
+        ar.splice(1, 0, ...inseredNumbers)
+        expect(ar).toEqual(expected);
+    })
+})
+
+describe("removing elements from array", () => {
+    it("removing first element", () => {
+        const ar = [1, 2, 3, 4];
+        const expected = [2, 3, 4];
+        ar.shift();
+        expect(ar).toEqual(expected);
+    })
+    it("removing last element", () => {
+        const ar = [1, 2, 3, 4];
+        const expected = [1, 2, 3];
+        ar.pop();
+        expect(ar).toEqual(expected);
+    })
+    it("removing elements from middleof array", () => {
+        const ar = [1, 2, 3, 4];
+        const expected = [1, 4];
+        ar.splice(1, 2);
         expect(ar).toEqual(expected);
     })
 })
