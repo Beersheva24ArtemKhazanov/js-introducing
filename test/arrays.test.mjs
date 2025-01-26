@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+const ar = [18, 1000, -10, 30, 60, 50];
 
 describe("meaning of spread operator for arrays and arguments", () => {
     it("finding maximal number from array", () => {
@@ -128,7 +129,6 @@ describe("iterating elements of array", () => {
 })
 
 describe("sorting array", () => {
-    const ar = [18, 1000, -10, 30, 60, 50];
     it("native sorting", () => {
         const expected = [-10, 18, 30, 50, 60, 1000];
         expect(ar.toSorted((a, b) => a - b)).toEqual(expected);
@@ -152,5 +152,21 @@ describe("array introspecting", () => {
     it("testing for all elements match a condition", () => {
         expect(ar.every(num => num % 2 === 0)).toBeTruthy();
         expect(ar.some(num => num % 2 !== 0)).toBeFalsy();
+    })
+})
+
+describe("slice, string-split, join methods of array", () => {
+    it("slice method", () => {
+        const array = [1, 2, 3, 4, 5];
+        const expected = [2, 3, 4];
+        expect(array.slice(1,4)).toEqual(expected);
+        const copyExpected = [1, 2, 3, 4, 5];
+        expect(array.slice()).toEqual(copyExpected);
+    })
+    it("join method", () => {
+        const expectedStr = "18-1000--10-30-60-50";
+        expect(ar.join("-")).toBe(expectedStr);
+        const arStr = expectedStr.split(/(?<=\d)-|^-/);
+        expect(arStr).toEqual(ar.map(s => s.toString()));
     })
 })
