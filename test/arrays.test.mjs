@@ -62,3 +62,47 @@ describe("removing elements from array", () => {
         expect(ar).toEqual(expected);
     })
 })
+
+describe("finding elements in array", () => {
+    it("method indexOf and last IndexOf from primitives", () => {
+        const ar = [1, 2, 3, 4, 2, 4];
+        expect(ar.indexOf(20)).toBe(-1);
+        expect(ar.indexOf(2)).toBe(1);
+    })
+    it("getting index of an Object inside array", () => {
+        const obj1 = { x: 7 };
+        const ar = [
+            { x: 4 },
+            { x: 5 },
+            { x: 6 },
+            { x: 7 },
+            obj1
+        ];
+        expect(ar.indexOf({ x: 4 })).toBe(-1);
+        expect(ar.indexOf(obj1)).toBe(4);
+        expect(ar.findIndex(obj => obj.x === 5)).toBe(1);
+        expect(ar.findIndex(obj => obj.x === 20)).toBe(-1);
+    })
+    it("finding object in array", () => {
+        const obj1 = { x: 7 };
+        const ar = [
+            { x: 4 },
+            { x: 5 },
+            { x: 6 },
+            { x: 7 },
+            obj1
+        ];
+        expect(ar.find(obj => obj.x === 5)).toEqual({ x: 5 });
+    })
+    it("finding several objects/primitives matching a predicate", () => {
+        const arPrimitives = [1, 2, -3, 4, 5, 6];
+        const arObjects = [
+            { x: 4 },
+            { x: 5 },
+            { x: 6 },
+            { x: 7 }
+        ];
+        expect(arPrimitives.filter(num => num % 2 != 0)).toEqual([1, -3, 5])
+        expect(arObjects.filter(obj => obj.x % 2 === 0)).toEqual([{ x: 4 },{ x: 6 }])
+    })
+})
