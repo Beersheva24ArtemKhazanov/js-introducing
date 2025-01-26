@@ -106,3 +106,23 @@ describe("finding elements in array", () => {
         expect(arObjects.filter(obj => obj.x % 2 === 0)).toEqual([{ x: 4 },{ x: 6 }])
     })
 })
+
+describe("iterating elements of array", () => {
+    const array = [1, 2, -3, 4, 5, 6];
+    it("printing out elements using for..in", () => {
+        for(let i in array) {
+            console.log(array[i]);
+        }
+    })
+    it("printing out elements using for..of", () => {
+        for(let num of array) {
+            console.log(num);
+        }
+    })
+    it("printing out elements using forEach", () => {
+        array.forEach(e => console.log(e));
+    })
+    it("printing out index and elements from array", () => {
+        array.forEach((e ,i)=> console.log(`index: ${i}; element: ${e}`));
+    })
+})
