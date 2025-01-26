@@ -130,7 +130,27 @@ describe("iterating elements of array", () => {
 describe("sorting array", () => {
     const ar = [18, 1000, -10, 30, 60, 50];
     it("native sorting", () => {
-        const expected = [-10, 18, 30, 50, 60, 1000 ];
-        expect(ar.toSorted((a,b) => a - b)).toEqual(expected);
+        const expected = [-10, 18, 30, 50, 60, 1000];
+        expect(ar.toSorted((a, b) => a - b)).toEqual(expected);
+    })
+})
+describe("array introspecting", () => {
+    const ar = [18, 1000, -10, 30, 60, 50];
+    const objects = [
+        { x: 4 },
+        { x: 5 }
+    ];
+    it("includes", () => {
+        expect(ar.includes(1000)).toBeTruthy();
+        expect(ar.includes(10000)).toBeFalsy();
+        expect(ar.includes({ x: 4 })).toBeFalsy();
+    })
+    it("testing for array of objects", () => {
+        expect(objects.find(obj => obj.x === 4)).toBeTruthy();
+        expect(objects.find(obj => obj.x === 1)).toBeFalsy();
+    })
+    it("testing for all elements match a condition", () => {
+        expect(ar.every(num => num % 2 === 0)).toBeTruthy();
+        expect(ar.some(num => num % 2 !== 0)).toBeFalsy();
     })
 })
