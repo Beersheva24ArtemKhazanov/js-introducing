@@ -103,19 +103,19 @@ describe("finding elements in array", () => {
             { x: 7 }
         ];
         expect(arPrimitives.filter(num => num % 2 != 0)).toEqual([1, -3, 5])
-        expect(arObjects.filter(obj => obj.x % 2 === 0)).toEqual([{ x: 4 },{ x: 6 }])
+        expect(arObjects.filter(obj => obj.x % 2 === 0)).toEqual([{ x: 4 }, { x: 6 }])
     })
 })
 
 describe("iterating elements of array", () => {
     const array = [1, 2, -3, 4, 5, 6];
     it("printing out elements using for..in", () => {
-        for(let i in array) {
+        for (let i in array) {
             console.log(array[i]);
         }
     })
     it("printing out elements using for..of", () => {
-        for(let num of array) {
+        for (let num of array) {
             console.log(num);
         }
     })
@@ -123,6 +123,14 @@ describe("iterating elements of array", () => {
         array.forEach(e => console.log(e));
     })
     it("printing out index and elements from array", () => {
-        array.forEach((e ,i)=> console.log(`index: ${i}; element: ${e}`));
+        array.forEach((e, i) => console.log(`index: ${i}; element: ${e}`));
+    })
+})
+
+describe("sorting array", () => {
+    const ar = [18, 1000, -10, 30, 60, 50];
+    it("native sorting", () => {
+        const expected = [-10, 18, 30, 50, 60, 1000 ];
+        expect(ar.toSorted((a,b) => a - b)).toEqual(expected);
     })
 })
