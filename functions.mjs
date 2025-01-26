@@ -26,16 +26,11 @@ const displayPointArrow = (z) => {
 // display.apply(point, 60);
 
 export function myBind(thisArg, ...otherArgs) {
-    // const func = (...args) => {
-    //     return func.apply(thisArg, args);
-    // }
-    // return func;
-    //TODO
-    //write method myBind fully running standard "bind" method
-    //no using standard call / apply methods
-    const func = this;
     return (...args) => {
-        thisArg.function = func;
-        return thisArg.function(...args, ...otherArgs);
+        const key = new Date().getTime();
+        thisArg[key] = this;
+        const res = thisArg[key](...args, ...otherArgs);
+        delete thisArg[key];
+        return res;
     }
 }

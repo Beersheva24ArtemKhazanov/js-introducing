@@ -26,7 +26,7 @@ describe("myBind test cases according ti rhe TODO comments", () => {
     })
 
     it("part of args are passed in bind and other part in the bind", () => {
-        const func = sumArguments.bind(dimensions, 10, 20);
+        const func = sumArguments.bind(dimensions, 10);
         expect(func(20)).toBe(37);
     })
 
