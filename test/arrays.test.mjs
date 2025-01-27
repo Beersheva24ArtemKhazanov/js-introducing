@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { myMap, myReduce } from "../arrays.mjs";
 const ar = [18, 1000, -10, 30, 60, 50];
 
 describe("meaning of spread operator for arrays and arguments", () => {
@@ -168,5 +169,22 @@ describe("slice, string-split, join methods of array", () => {
         expect(ar.join("-")).toBe(expectedStr);
         const arStr = expectedStr.split(/(?<=\d)-|^-/);
         expect(arStr).toEqual(ar.map(s => s.toString()));
+    })
+})
+
+describe("map / reduce", () => {
+    const ar = [10, 1000, -10, 30, 60];
+    ar.map = myMap;
+    ar.reduce = myReduce;
+    it("myMap testing", () => {
+        const expected = [10, 1001, -8, 33, 64];
+        expect(ar.map((e, index ) => e + index)).toEqual(expected);
+    })
+    it("myReduce testing", () => {
+        //TODO
+        //write two methods for taking sum of all elements
+        //and minimal and maximal values for only one reduce call
+        const expected = 10 + 1000 - 10 + 30 + 60;
+        expect(ar.reduce((acc, cur) => acc + cur)).toBe(expected);
     })
 })
