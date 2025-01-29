@@ -160,7 +160,7 @@ describe("slice, string-split, join methods of array", () => {
     it("slice method", () => {
         const array = [1, 2, 3, 4, 5];
         const expected = [2, 3, 4];
-        expect(array.slice(1,4)).toEqual(expected);
+        expect(array.slice(1, 4)).toEqual(expected);
         const copyExpected = [1, 2, 3, 4, 5];
         expect(array.slice()).toEqual(copyExpected);
     })
@@ -178,13 +178,27 @@ describe("map / reduce", () => {
     ar.reduce = myReduce;
     it("myMap testing", () => {
         const expected = [10, 1001, -8, 33, 64];
-        expect(ar.map((e, index ) => e + index)).toEqual(expected);
+        expect(ar.map((e, index) => e + index)).toEqual(expected);
     })
     it("myReduce testing", () => {
-        //TODO
-        //write two methods for taking sum of all elements
-        //and minimal and maximal values for only one reduce call
         const expected = 10 + 1000 - 10 + 30 + 60;
-        expect(ar.reduce((acc, cur) => acc + cur)).toBe(expected);
+        expect(ar.reduce((acc, cur) => acc + cur), 0).toBe(expected);
     })
 })
+
+describe("destucturing array", () => {
+    it("assigning two first elements from array to different variables", () => {
+        const [a, b] = ar;
+        expect(a).toBe(ar[0]);
+        expect(b).toBe(ar[1]);
+    })
+
+    it("swap value of usind destructuring", () => {
+        let a = 10;
+        let b = 20;
+        const array = [a, b];
+        [b, a] = array;
+        expect(b).toBe(10);
+        expect(a).toBe(20);
+    })
+}) 

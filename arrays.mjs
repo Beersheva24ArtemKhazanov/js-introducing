@@ -7,11 +7,9 @@ export function myMap(callback) {
     return res;
 }
 
-export function myReduce(callback) {
-    //TODO
-    //see documentation 
+export function myReduce(callback, initialValue) { 
     const ar = this;
-    let res = 0;
+    let res = initialValue === undefined ? 0 : initialValue;
     for (let i = 0; i < ar.length; i++) {
          res = callback(res, ar[i]);
     }
