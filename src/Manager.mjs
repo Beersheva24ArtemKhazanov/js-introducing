@@ -1,8 +1,11 @@
 import Employee from "./Employee.mjs";
 
 export default class Manager extends Employee {
-    constructor(id, department, basicSalary, factor = 0) {
-        super(id, department, basicSalary);
+    static {
+        Employee.classMap.Manager = new Manager()
+    };
+    constructor(id, department, basicSalary, factor = 0, className) {
+        super(id, department, basicSalary, className ?? "Manager");
         this.factor = factor;
     }
 
