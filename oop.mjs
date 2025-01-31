@@ -54,3 +54,10 @@ console.log(employeesStr);
 console.log(budget);
 const stam = [1, 2, 3, 4].reduce()
 console.log(stam)
+
+
+const d = new Deferred();
+d.then(function (res) { console.log("1 ", res); return "a"; })
+    .then(function (res) { console.log("2 ", res); return "b"; })
+    .then(function (res) { console.log("3 ", res); return "c"; })
+    .resolve('hello');
