@@ -1,4 +1,4 @@
-
+import Deferred from './Deferred.mjs'
 function createPerson (id, name, age) {
 
     return {id,name, age};
