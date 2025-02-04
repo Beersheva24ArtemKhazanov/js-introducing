@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { makeIteratorClosedRange, makeIterableClosedRange } from '../objects.mjs';
+import { makeIteratorClosedRange, makeIterableClosedRange, makeGeneratorClosedRange, makeIterableBasedGenerator } from '../objects.mjs';
 
 describe("object iterating", () => {
     const person = { name: "Vasya", age: 25 };
@@ -100,7 +100,7 @@ describe("JSON functionality", () => {
 });
 
 describe("Iterator pattern test", () => {
-    it("Iterator test", () => {
+    it("Iterator test based on making Iterator", () => {
         const iterator = makeIteratorClosedRange(1, 3);
         const expected = [1, 2, 3];
         const actual = [];
@@ -113,8 +113,8 @@ describe("Iterator pattern test", () => {
         }
         expect(actual).toEqual(expected);
     })
-
-    it("Iterable test", () => {
+    
+    it("Iterable test  based on making Iterator", () => {
         const iterable = makeIterableClosedRange(1, 3);
         const expected = [1, 2, 3];
         const actual = [];
@@ -122,6 +122,27 @@ describe("Iterator pattern test", () => {
             actual.push(num);
         }
         expect(actual).toEqual(expected);
-        actual.length = 0;
+    })
+    it("Iterator test based on generator", () => {
+        const iterator = makeGeneratorClosedRange(1, 3);
+        const expected = [1, 2, 3];
+        const actual = [];
+        while (true) {
+            const { value, done } = iterator.next();
+            if (done) {
+                break;
+            }
+            actual.push(value);
+        }
+        expect(actual).toEqual(expected);
+    })
+    it("Iterable test based on generator", () => {
+        const iterable = makeIterableBasedGenerator(1, 3);
+        const expected = [1, 2, 3];
+        const actual = [];
+        for (let num of iterable) {
+            actual.push(num);
+        }
+        expect(actual).toEqual(expected);
     })
 })
